@@ -1,0 +1,187 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style.css">
+<title>Ayurvedic 100 Medicines</title>
+<style>
+*{
+  margin:0;
+  padding: 0;
+  font-family:Arial,sans-serif;
+   
+}
+header{
+  background:#2e8b57;
+  color:#fff;
+  padding:20px;
+  text-align:center;
+}
+.search{
+  max-width:500px;
+  margin:20px auto;
+  padding:0 15px;
+}
+.search input{
+  width:100%;
+  padding:12px 15px;
+  border-radius:25px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.card{
+  background:#fff;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  transition:0.4s;
+  text-align:center;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 15px 30px rgba(46,139,87,0.3);
+}
+.card img{
+  width:80px;
+  height:80px;
+  object-fit:contain;
+}
+.card h3{
+  margin:10px 0 5px;
+  color:#2e8b57;
+}
+.card p{
+  margin:4px 0;
+  font-size:14px;
+}
+footer{
+  background:#2e8b57;
+  color:white;
+  text-align:center;
+  padding:15px;
+}
+.note{
+  font-size:12px;
+  opacity:0.9;
+}
+</style>
+</head>
+<body>
+<section class="navbar">
+            <div class="logo">
+                <span>💊</span> MedicoCare
+            </div>
+            <ul class="nav-links" id="navLinks">
+                 <li><a href="/med-web">Home</a></li>
+                <li><a href="/med-web/#medicine">Medicines</a></li>
+                <li><a href="/med-web/#services">Healthcare</a></li>
+                <li><a href="/med-web/#lab">Test</a></li>
+                <li><a href="/med-web/#emergency">Emergency</a></li>
+                <li><a href="/med-web/#appointment">Book an Appointment</a></li> 
+                   <li><a href="/med-web/#review">Review</a>
+          
+                 <li><a href="/med-web/#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+         </section>
+<header>
+  <h1>🌿 Ayurvedic Products</h1>
+  <p>100 Products – Price, Work, Details & Benefits</p>
+</header>
+
+
+<div class="search">
+  <input type="text" id="search" placeholder="Search Ayurvedic product...">
+</div>
+
+<div class="container" id="productList"></div>
+
+<footer>
+  <p class="note">
+    Educational purpose only • Consult doctor before use
+  </p>
+  © 2025 Ayurvedic Store
+</footer>
+
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+// Generate 100 Ayurvedic products
+const products = [];
+const works = [
+  "Herbal treatment for general wellness",
+  "Supports digestion",
+  "Improves immunity",
+  "Reduces stress",
+  "Supports healthy skin",
+  "Detoxifies body",
+  "Enhances energy",
+  "Promotes sleep"
+];
+const benefits = [
+  "Boosts overall health",
+  "Improves immunity",
+  "Reduces fatigue",
+  "Detoxifies body",
+  "Improves digestion",
+  "Supports mental clarity",
+  "Healthy skin & hair",
+  "Supports longevity"
+];
+
+for(let i=1;i<=200;i++){
+  products.push({
+    name: "Ayurvedic Product " + i,
+    price: "₹" + (50 + (i%10)*25),
+    work: works[i % works.length],
+    details: "Safe herbal product for daily use",
+    benefit: benefits[i % benefits.length],
+    img: "https://cdn-icons-png.flaticon.com/512/2909/2909768.png"
+  });
+}
+
+const list = document.getElementById("productList");
+
+function showData(data){
+  list.innerHTML="";
+  data.forEach(p=>{
+    list.innerHTML += `
+      <div class="card">
+        <img src="${p.img}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p><b>Price:</b> ${p.price}</p>
+        <p><b>Work:</b> ${p.work}</p>
+        <p><b>Details:</b> ${p.details}</p>
+        <p><b>Benefit:</b> ${p.benefit}</p>
+      </div>
+    `;
+  });
+}
+
+showData(products);
+
+// Search filter
+document.getElementById("search").addEventListener("input",function(){
+  const value = this.value.toLowerCase();
+  const filtered = products.filter(p=>p.name.toLowerCase().includes(value));
+  showData(filtered);
+});
+</script>
+
+</body>
+</html> 

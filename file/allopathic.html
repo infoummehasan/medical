@@ -1,0 +1,199 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style.css">
+<title>Allopathic Medicines</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f8ff;
+}
+header{
+  background:#0a7cff;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+.search{
+  max-width:500px;
+  margin:20px auto;
+  padding:0 15px;
+}
+.search input{
+  width:100%;
+  padding:12px 15px;
+  border-radius:25px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.card{
+  background:white;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transition:0.4s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 15px 35px rgba(10,124,255,0.3);
+}
+.card h3{
+  margin:0;
+  color:#0a7cff;
+}
+.card p{
+  margin:6px 0;
+  font-size:14px;
+}
+footer{
+  background:#0a7cff;
+  color:white;
+  text-align:center;
+  padding:15px;
+}
+</style>
+</head>
+
+<body>
+<section class="navbar">
+            <div class="logo">
+                <span>💊</span> MedicoCare
+            </div>
+            <ul class="nav-links" id="navLinks">
+                 <li><a href="/med-web">Home</a></li>
+                <li><a href="/med-web/#medicine">Medicines</a></li>
+                <li><a href="/med-web/#services">Healthcare</a></li>
+                <li><a href="/med-web/#lab">Test</a></li>
+                <li><a href="/med-web/#emergency">Emergency</a></li>
+                <li><a href="/med-web/#appointment">Book an Appointment</a></li> 
+                   <li><a href="/med-web/#review">Review</a>
+          
+                 <li><a href="/med-web/#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+         </section>
+<header>
+  <h1>💊 Allopathic Medicines</h1>
+  <p>100 Medicines – Price, Work & Benefits</p>
+</header>
+
+<div class="search">
+  <input type="text" id="search" placeholder="Search medicine name...">
+</div>
+
+<div class="container" id="medicineList"></div>
+
+<footer>
+  © 2025 Medical Information (Educational Purpose)
+</footer>
+
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+const medicines = [
+{name:"Paracetamol",price:"₹20–30",work:"Pain & fever reducer",benefit:"Safe fever relief"},
+{name:"Ibuprofen",price:"₹30–50",work:"Pain & inflammation",benefit:"Strong pain control"},
+{name:"Aspirin",price:"₹15–25",work:"Pain, blood thinner",benefit:"Prevents clot"},
+{name:"Amoxicillin",price:"₹60–120",work:"Antibiotic",benefit:"Bacterial infection"},
+{name:"Azithromycin",price:"₹90–150",work:"Antibiotic",benefit:"Respiratory infection"},
+{name:"Ciprofloxacin",price:"₹80–140",work:"Antibiotic",benefit:"UTI treatment"},
+{name:"Doxycycline",price:"₹40–70",work:"Antibiotic",benefit:"Acne control"},
+{name:"Metronidazole",price:"₹25–40",work:"Anti-amoebic",benefit:"Diarrhea relief"},
+{name:"Cefixime",price:"₹120–200",work:"Antibiotic",benefit:"Severe infection"},
+{name:"Levofloxacin",price:"₹150–250",work:"Antibiotic",benefit:"Lung infection"},
+
+{name:"Metformin",price:"₹30–60",work:"Diabetes control",benefit:"Lowers sugar"},
+{name:"Glimepiride",price:"₹40–80",work:"Diabetes",benefit:"Improves insulin"},
+{name:"Insulin",price:"₹300–700",work:"Sugar control",benefit:"Essential for diabetes"},
+{name:"Amlodipine",price:"₹30–60",work:"BP control",benefit:"Heart safety"},
+{name:"Losartan",price:"₹50–90",work:"BP control",benefit:"Kidney protection"},
+{name:"Telmisartan",price:"₹70–120",work:"BP",benefit:"Long-lasting"},
+{name:"Ramipril",price:"₹80–140",work:"BP",benefit:"Heart protection"},
+{name:"Atenolol",price:"₹25–50",work:"BP & heart rate",benefit:"Stress control"},
+{name:"Metoprolol",price:"₹60–100",work:"BP",benefit:"Angina prevention"},
+{name:"Propranolol",price:"₹40–70",work:"BP, anxiety",benefit:"Migraine prevention"},
+
+{name:"Atorvastatin",price:"₹80–150",work:"Cholesterol",benefit:"Heart attack prevention"},
+{name:"Rosuvastatin",price:"₹150–250",work:"Cholesterol",benefit:"Strong statin"},
+{name:"Clopidogrel",price:"₹90–160",work:"Blood thinner",benefit:"Stroke prevention"},
+{name:"Nitroglycerin",price:"₹30–60",work:"Chest pain",benefit:"Instant relief"},
+{name:"Furosemide",price:"₹20–40",work:"Diuretic",benefit:"Reduces swelling"},
+{name:"Spironolactone",price:"₹30–60",work:"Heart failure",benefit:"Fluid control"},
+
+{name:"Omeprazole",price:"₹30–60",work:"Acid reducer",benefit:"Ulcer prevention"},
+{name:"Pantoprazole",price:"₹50–90",work:"Acidity",benefit:"GERD relief"},
+{name:"Domperidone",price:"₹40–70",work:"Anti-vomiting",benefit:"Better digestion"},
+{name:"Ondansetron",price:"₹60–100",work:"Vomiting control",benefit:"Nausea relief"},
+{name:"Lactulose",price:"₹80–150",work:"Constipation",benefit:"Soft stool"},
+{name:"ORS",price:"₹20–30",work:"Rehydration",benefit:"Prevents dehydration"},
+{name:"Cetirizine",price:"₹20–40",work:"Allergy",benefit:"Itching relief"},
+{name:"Loratadine",price:"₹30–50",work:"Allergy",benefit:"Non-drowsy"},
+
+{name:"Salbutamol",price:"₹30–60",work:"Asthma",benefit:"Opens airway"},
+{name:"Budesonide",price:"₹150–300",work:"Asthma control",benefit:"Prevents attacks"},
+{name:"Montelukast",price:"₹80–150",work:"Asthma & allergy",benefit:"Breathing support"},
+
+{name:"Diazepam",price:"₹30–60",work:"Anxiety",benefit:"Calming"},
+{name:"Alprazolam",price:"₹50–90",work:"Anxiety",benefit:"Panic control"},
+{name:"Clonazepam",price:"₹80–150",work:"Seizures",benefit:"Nerve relaxation"},
+
+{name:"Vitamin C",price:"₹30–60",work:"Immunity",benefit:"Boost defense"},
+{name:"Vitamin D3",price:"₹80–150",work:"Bone health",benefit:"Strong bones"},
+{name:"Vitamin B12",price:"₹60–120",work:"Nerve health",benefit:"Energy boost"},
+{name:"Folic Acid",price:"₹20–40",work:"Blood formation",benefit:"Prevents anemia"},
+{name:"Iron Tablet",price:"₹40–80",work:"Anemia",benefit:"Increases Hb"},
+{name:"Calcium",price:"₹50–100",work:"Bone strength",benefit:"Prevents fracture"},
+
+{name:"Diclofenac",price:"₹20–40",work:"Pain relief",benefit:"Joint pain"},
+{name:"Aceclofenac",price:"₹40–80",work:"Arthritis",benefit:"Anti-inflammatory"},
+{name:"Tramadol",price:"₹50–100",work:"Severe pain",benefit:"Strong relief"},
+{name:"Acyclovir",price:"₹150–300",work:"Antiviral",benefit:"Herpes control"},
+{name:"Oseltamivir",price:"₹400–700",work:"Flu",benefit:"Reduces severity"},
+{name:"Antiseptic Liquid",price:"₹30–60",work:"Disinfection",benefit:"Kills germs"}
+];
+
+const list = document.getElementById("medicineList");
+
+function showData(data){
+  list.innerHTML="";
+  data.forEach(m=>{
+    list.innerHTML += `
+      <div class="card">
+        <h3>${m.name}</h3>
+        <p><b>Price:</b> ${m.price}</p>
+        <p><b>Work:</b> ${m.work}</p>
+        <p><b>Benefit:</b> ${m.benefit}</p>
+      </div>
+    `;
+  });
+}
+
+showData(medicines);
+
+document.getElementById("search").addEventListener("input",function(){
+  const value = this.value.toLowerCase();
+  const filtered = medicines.filter(m=>m.name.toLowerCase().includes(value));
+  showData(filtered);
+});
+</script>
+
+</body>
+</html>
