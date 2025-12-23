@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>COVID-19 Tests – All Categories</title>
+<link rel="stylesheet" href="../style.css">
+
+<style>
+*{
+    font-family: Arial, sans-serif;
+     
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+h1{
+    text-align:center;
+    color:#1e3c72;
+}
+#search{
+    width:100%;
+    max-width:450px;
+    padding:12px;
+    display:block;
+    margin:20px auto;
+    font-size:16px;
+}
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:15px;
+}
+.card{
+    background:#fff;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.card h3{
+    margin:0 0 8px;
+    color:#0077b6;
+}
+.category{
+    font-size:13px;
+    color:#555;
+    font-weight:bold;
+}
+.price{
+    color:#27ae60;
+    font-weight:bold;
+    margin:6px 0;
+}
+.card p{
+    font-size:14px;
+    margin:4px 0;
+}
+</style>
+</head>
+
+<body>
+    <section class="navbar">
+            <div class="logo">
+                <span>💊</span> MedicoCare
+            </div>
+            <ul class="nav-links" id="navLinks">
+                 <li><a href="/med-web">Home</a></li>
+                <li><a href="/med-web/#medicine">Medicines</a></li>
+                <li><a href="/med-web/#services">Healthcare</a></li>
+                <li><a href="/med-web/#lab">Test</a></li>
+                <li><a href="/med-web/#emergency">Emergency</a></li>
+                <li><a href="/med-web/#appointment">Book an Appointment</a></li> 
+                   <li><a href="/med-web/#review">Review</a>
+          
+                 <li><a href="/med-web/#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+         </section>
+
+<h1>🦠 COVID-19 Tests – All Categories</h1>
+
+<input type="text" id="search" placeholder="Search COVID test...">
+
+<div class="container" id="testList"></div>
+
+<script>
+const covidTests = [
+
+/* 🔹 Molecular Tests */
+{
+ name:"RT-PCR COVID Test",
+ category:"Molecular Test",
+ price:800,
+ details:"Gold standard COVID test",
+ work:"Detects viral RNA",
+ benefit:"Most accurate diagnosis"
+},
+{
+ name:"TrueNat COVID Test",
+ category:"Molecular Test",
+ price:600,
+ details:"Portable molecular test",
+ work:"Detects SARS-CoV-2 genes",
+ benefit:"Fast & reliable"
+},
+{
+ name:"CBNAAT COVID Test",
+ category:"Molecular Test",
+ price:700,
+ details:"Cartridge-based test",
+ work:"Identifies virus genetic material",
+ benefit:"Quick confirmation"
+},
+
+/* 🔹 Antigen Tests */
+{
+ name:"Rapid Antigen Test",
+ category:"Antigen Test",
+ price:250,
+ details:"Rapid nasal swab test",
+ work:"Detects viral proteins",
+ benefit:"Quick screening"
+},
+{
+ name:"Home COVID Antigen Test",
+ category:"Antigen Test",
+ price:300,
+ details:"Self-testing kit",
+ work:"Detects COVID antigen",
+ benefit:"Home convenience"
+},
+
+/* 🔹 Antibody Tests */
+{
+ name:"COVID Antibody IgG Test",
+ category:"Antibody Test",
+ price:500,
+ details:"IgG antibody detection",
+ work:"Shows past infection",
+ benefit:"Immunity assessment"
+},
+{
+ name:"COVID Antibody IgM Test",
+ category:"Antibody Test",
+ price:500,
+ details:"IgM antibody test",
+ work:"Recent infection detection",
+ benefit:"Early immune response"
+},
+{
+ name:"Total COVID Antibody Test",
+ category:"Antibody Test",
+ price:650,
+ details:"IgG + IgM antibodies",
+ work:"Measures total immunity",
+ benefit:"Exposure confirmation"
+},
+
+/* 🔹 Rapid Combo Tests */
+{
+ name:"COVID Antigen + Flu Test",
+ category:"Combo Test",
+ price:450,
+ details:"COVID + Influenza",
+ work:"Detects multiple viruses",
+ benefit:"Differential diagnosis"
+},
+{
+ name:"COVID Antigen + RSV Test",
+ category:"Combo Test",
+ price:500,
+ details:"COVID & RSV detection",
+ work:"Rapid virus screening",
+ benefit:"Respiratory diagnosis"
+},
+
+/* 🔹 Pool & Screening */
+{
+ name:"COVID Pool Testing",
+ category:"Screening Test",
+ price:200,
+ details:"Group sample testing",
+ work:"Detects virus in groups",
+ benefit:"Cost-effective screening"
+},
+{
+ name:"COVID Airport Test",
+ category:"Screening Test",
+ price:600,
+ details:"Travel testing",
+ work:"Rapid COVID detection",
+ benefit:"Travel clearance"
+},
+
+/* 🔹 Advanced Tests */
+{
+ name:"COVID Genome Sequencing",
+ category:"Advanced Test",
+ price:5000,
+ details:"Variant identification",
+ work:"Analyzes virus genome",
+ benefit:"Detects mutations"
+},
+{
+ name:"COVID Viral Load Test",
+ category:"Advanced Test",
+ price:1200,
+ details:"Measures virus quantity",
+ work:"Quantifies viral load",
+ benefit:"Treatment monitoring"
+},
+
+/* 🔹 Post-COVID Tests */
+{
+ name:"Post COVID Lung Test",
+ category:"Post-COVID Care",
+ price:1500,
+ details:"Lung health check",
+ work:"Assesses lung damage",
+ benefit:"Recovery monitoring"
+},
+{
+ name:"Post COVID Blood Panel",
+ category:"Post-COVID Care",
+ price:1800,
+ details:"Inflammation markers",
+ work:"Checks recovery status",
+ benefit:"Long COVID detection"
+}
+
+];
+
+const list = document.getElementById("testList");
+
+function showData(data){
+    list.innerHTML="";
+    data.forEach(t=>{
+        list.innerHTML+=`
+        <div class="card">
+            <h3>${t.name}</h3>
+            <div class="category">Category: ${t.category}</div>
+            <div class="price">Price: ₹${t.price}</div>
+            <p><b>Details:</b> ${t.details}</p>
+            <p><b>Work:</b> ${t.work}</p>
+            <p><b>Benefit:</b> ${t.benefit}</p>
+        </div>`;
+    });
+}
+
+showData(covidTests);
+
+document.getElementById("search").addEventListener("input",function(){
+    const value=this.value.toLowerCase();
+    const filtered=covidTests.filter(t=>
+        t.name.toLowerCase().includes(value) ||
+        t.category.toLowerCase().includes(value)
+    );
+    showData(filtered);
+});
+</script>
+
+</body>
+</html>

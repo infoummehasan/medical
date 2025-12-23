@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Tests</title>
+<link rel="stylesheet" href="../style.css">
+
+<style>
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:Arial, sans-serif;
+   
+}
+header{
+  background:#b71c1c;
+  color:#fff;
+  padding:20px;
+  text-align:center;
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.card{
+  background:#fff;
+  padding:15px;
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  transition:0.4s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 15px 35px rgba(183,28,28,0.35);
+}
+.card img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  display:block;
+  margin:auto;
+}
+.card h3{
+  margin:10px 0 5px;
+  text-align:center;
+  color:#b71c1c;
+  font-size:16px;
+}
+.card p{
+  margin:5px 0;
+  font-size:14px;
+}
+footer{
+  background:#b71c1c;
+  color:#fff;
+  text-align:center;
+  padding:15px;
+  margin-top:30px;
+}
+.note{
+  font-size:12px;
+  opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+  <section class="navbar">
+            <div class="logo">
+                <span>💊</span> MedicoCare
+            </div>
+            <ul class="nav-links" id="navLinks">
+                 <li><a href="/med-web">Home</a></li>
+                <li><a href="/med-web/#medicine">Medicines</a></li>
+                <li><a href="/med-web/#services">Healthcare</a></li>
+                <li><a href="/med-web/#lab">Test</a></li>
+                <li><a href="/med-web/#emergency">Emergency</a></li>
+                <li><a href="/med-web/#appointment">Book an Appointment</a></li> 
+                   <li><a href="/med-web/#review">Review</a>
+          
+                 <li><a href="/med-web/#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+         </section>
+
+<header>
+  <h1>🩸 Blood Test Services</h1>
+  <p>20 Common Blood Tests – Price, Work, Details & Benefits</p>
+</header>
+
+<div class="container" id="testList"></div>
+
+<footer>
+  <p class="note">
+    Educational purpose only • Consult doctor for interpretation
+  </p>
+  © 2025 Diagnostic Lab
+</footer>
+
+<script>
+const bloodTests = [
+{
+  name:"Complete Blood Count (CBC)",
+  price:"₹300–500",
+  work:"Checks overall blood health",
+  details:"Measures RBC, WBC, Hemoglobin, Platelets",
+  benefit:"Detects anemia and infections"
+},
+{
+  name:"Blood Sugar (Fasting)",
+  price:"₹100–150",
+  work:"Measures glucose level",
+  details:"Done after 8–10 hours fasting",
+  benefit:"Diabetes diagnosis"
+},
+{
+  name:"Blood Sugar (PP)",
+  price:"₹100–150",
+  work:"Checks sugar after meals",
+  details:"Done 2 hours after food",
+  benefit:"Monitors diabetes control"
+},
+{
+  name:"HbA1c",
+  price:"₹400–700",
+  work:"Average blood sugar",
+  details:"Shows 3-month sugar level",
+  benefit:"Long-term diabetes monitoring"
+},
+{
+  name:"Lipid Profile",
+  price:"₹600–1000",
+  work:"Cholesterol test",
+  details:"Checks HDL, LDL, Triglycerides",
+  benefit:"Heart disease prevention"
+},
+{
+  name:"Liver Function Test (LFT)",
+  price:"₹700–1200",
+  work:"Checks liver health",
+  details:"Measures liver enzymes",
+  benefit:"Detects liver disease"
+},
+{
+  name:"Kidney Function Test (KFT)",
+  price:"₹600–1000",
+  work:"Checks kidney health",
+  details:"Urea, Creatinine levels",
+  benefit:"Kidney disease detection"
+},
+{
+  name:"Thyroid Profile (T3 T4 TSH)",
+  price:"₹400–800",
+  work:"Thyroid gland function",
+  details:"Hormone level check",
+  benefit:"Detects thyroid disorders"
+},
+{
+  name:"Vitamin D Test",
+  price:"₹800–1500",
+  work:"Vitamin D level",
+  details:"Bone & immunity health",
+  benefit:"Prevents bone weakness"
+},
+{
+  name:"Vitamin B12 Test",
+  price:"₹600–1200",
+  work:"Vitamin B12 level",
+  details:"Nerve & blood health",
+  benefit:"Prevents anemia"
+},
+{
+  name:"CRP Test",
+  price:"₹500–800",
+  work:"Inflammation marker",
+  details:"Detects infection/inflammation",
+  benefit:"Early disease detection"
+},
+{
+  name:"ESR Test",
+  price:"₹200–400",
+  work:"Inflammation test",
+  details:"Measures sedimentation rate",
+  benefit:"Detects chronic disease"
+},
+{
+  name:"Uric Acid Test",
+  price:"₹200–350",
+  work:"Uric acid level",
+  details:"Detects gout",
+  benefit:"Joint pain prevention"
+},
+{
+  name:"Calcium Test",
+  price:"₹200–350",
+  work:"Calcium level",
+  details:"Bone health",
+  benefit:"Prevents bone disorders"
+},
+{
+  name:"Electrolytes Test",
+  price:"₹500–800",
+  work:"Sodium, Potassium levels",
+  details:"Fluid balance check",
+  benefit:"Prevents dehydration"
+},
+{
+  name:"Iron Studies",
+  price:"₹500–900",
+  work:"Iron status",
+  details:"Iron, Ferritin, TIBC",
+  benefit:"Detects anemia"
+},
+{
+  name:"Dengue Test",
+  price:"₹800–1500",
+  work:"Detects dengue virus",
+  details:"NS1, IgM, IgG",
+  benefit:"Early dengue diagnosis"
+},
+{
+  name:"Malaria Test",
+  price:"₹300–600",
+  work:"Detects malaria parasite",
+  details:"Rapid antigen test",
+  benefit:"Quick treatment"
+},
+{
+  name:"HIV Test",
+  price:"₹400–700",
+  work:"HIV detection",
+  details:"Antibody/antigen test",
+  benefit:"Early diagnosis"
+},
+{
+  name:"Hepatitis B (HBsAg)",
+  price:"₹400–800",
+  work:"Hepatitis infection test",
+  details:"Detects Hep B virus",
+  benefit:"Liver protection"
+}
+];
+
+// add same image for all
+const imageURL = "https://cdn-icons-png.flaticon.com/512/4320/4320337.png";
+
+const list = document.getElementById("testList");
+
+function showTests(){
+  bloodTests.forEach(test=>{
+    list.innerHTML += `
+      <div class="card">
+        <img src="${imageURL}" alt="${test.name}">
+        <h3>${test.name}</h3>
+        <p><b>Price:</b> ${test.price}</p>
+        <p><b>Work:</b> ${test.work}</p>
+        <p><b>Details:</b> ${test.details}</p>
+        <p><b>Benefit:</b> ${test.benefit}</p>
+      </div>
+    `;
+  });
+}
+
+showTests();
+</script>
+
+</body>
+</html>

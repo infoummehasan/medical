@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pathology Diagnostic Tests</title>
+<link rel="stylesheet" href="../style.css">
+
+<style>
+*{
+  padding: 0;
+  box-sizing: border-box;
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+   
+}
+header{
+  background:#0d47a1;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.card{
+  background:white;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  transition:0.4s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 15px 35px rgba(13,71,161,0.4);
+}
+.card img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  display:block;
+  margin:auto;
+}
+.card h3{
+  text-align:center;
+  color:#0d47a1;
+  font-size:16px;
+  margin:10px 0;
+}
+.card p{
+  font-size:14px;
+  margin:5px 0;
+}
+footer{
+  background:#0d47a1;
+  color:white;
+  text-align:center;
+  padding:15px;
+  margin-top:30px;
+  font-size:13px;
+}
+</style>
+</head>
+
+<body>
+  <section class="navbar">
+            <div class="logo">
+                <span>💊</span> MedicoCare
+            </div>
+            <ul class="nav-links" id="navLinks">
+                 <li><a href="/med-web">Home</a></li>
+                <li><a href="/med-web/#medicine">Medicines</a></li>
+                <li><a href="/med-web/#services">Healthcare</a></li>
+                <li><a href="/med-web/#lab">Test</a></li>
+                <li><a href="/med-web/#emergency">Emergency</a></li>
+                <li><a href="/med-web/#appointment">Book an Appointment</a></li> 
+                   <li><a href="/med-web/#review">Review</a>
+          
+                 <li><a href="/med-web/#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+         </section>
+
+<header>
+  <h1>🧪 Pathology Diagnostic Tests</h1>
+  <p>20 Essential Tests – Price, Work, Details & Benefits</p>
+</header>
+
+<div class="container" id="testContainer"></div>
+
+<footer>
+  Educational purpose only • Consult a doctor for diagnosis  
+</footer>
+
+<script>
+const tests = [
+{
+ name:"Complete Blood Count (CBC)",
+ price:"₹300–500",
+ work:"Checks overall blood health",
+ details:"Measures RBC, WBC, hemoglobin & platelets",
+ benefit:"Detects anemia & infections"
+},
+{
+ name:"Blood Sugar (Fasting)",
+ price:"₹100–150",
+ work:"Measures fasting glucose",
+ details:"Test done after 8–10 hours fasting",
+ benefit:"Diabetes diagnosis"
+},
+{
+ name:"Blood Sugar (PP)",
+ price:"₹100–150",
+ work:"Measures sugar after meals",
+ details:"2 hours after food",
+ benefit:"Monitors diabetes"
+},
+{
+ name:"HbA1c",
+ price:"₹400–700",
+ work:"Average blood sugar level",
+ details:"3-month glucose record",
+ benefit:"Long-term diabetes control"
+},
+{
+ name:"Lipid Profile",
+ price:"₹600–1000",
+ work:"Cholesterol levels",
+ details:"HDL, LDL, triglycerides",
+ benefit:"Heart disease prevention"
+},
+{
+ name:"Liver Function Test (LFT)",
+ price:"₹700–1200",
+ work:"Checks liver health",
+ details:"Measures liver enzymes",
+ benefit:"Detects liver disorders"
+},
+{
+ name:"Kidney Function Test (KFT)",
+ price:"₹600–1000",
+ work:"Kidney health assessment",
+ details:"Urea & creatinine levels",
+ benefit:"Early kidney disease detection"
+},
+{
+ name:"Thyroid Profile",
+ price:"₹400–800",
+ work:"Checks thyroid hormones",
+ details:"T3, T4, TSH levels",
+ benefit:"Detects thyroid problems"
+},
+{
+ name:"Vitamin D Test",
+ price:"₹800–1500",
+ work:"Vitamin D level",
+ details:"Bone & immunity health",
+ benefit:"Prevents bone weakness"
+},
+{
+ name:"Vitamin B12 Test",
+ price:"₹600–1200",
+ work:"Vitamin B12 level",
+ details:"Nerve & blood health",
+ benefit:"Prevents anemia"
+},
+{
+ name:"Urine Routine Test",
+ price:"₹150–300",
+ work:"Urinary system check",
+ details:"Color, sugar, protein",
+ benefit:"Detects infections"
+},
+{
+ name:"Stool Test",
+ price:"₹200–400",
+ work:"Digestive health check",
+ details:"Parasite & blood detection",
+ benefit:"Detects gut issues"
+},
+{
+ name:"ESR Test",
+ price:"₹200–400",
+ work:"Inflammation marker",
+ details:"Sedimentation rate",
+ benefit:"Detects chronic disease"
+},
+{
+ name:"CRP Test",
+ price:"₹500–800",
+ work:"Inflammation detection",
+ details:"Protein marker",
+ benefit:"Early infection detection"
+},
+{
+ name:"Uric Acid Test",
+ price:"₹200–350",
+ work:"Uric acid level",
+ details:"Gout detection",
+ benefit:"Joint health"
+},
+{
+ name:"Calcium Test",
+ price:"₹200–350",
+ work:"Calcium level",
+ details:"Bone strength test",
+ benefit:"Prevents osteoporosis"
+},
+{
+ name:"Iron Studies",
+ price:"₹500–900",
+ work:"Iron level assessment",
+ details:"Ferritin & iron levels",
+ benefit:"Detects iron deficiency"
+},
+{
+ name:"Dengue Test",
+ price:"₹800–1500",
+ work:"Detects dengue virus",
+ details:"NS1, IgM, IgG",
+ benefit:"Early dengue diagnosis"
+},
+{
+ name:"Malaria Test",
+ price:"₹300–600",
+ work:"Malaria parasite detection",
+ details:"Blood smear test",
+ benefit:"Quick malaria treatment"
+},
+{
+ name:"Hepatitis B Test",
+ price:"₹400–800",
+ work:"Detects Hepatitis B",
+ details:"HBsAg test",
+ benefit:"Liver protection"
+}
+];
+
+const imgURL = "https://cdn-icons-png.flaticon.com/512/4320/4320337.png";
+const container = document.getElementById("testContainer");
+
+tests.forEach(t=>{
+  container.innerHTML += `
+    <div class="card">
+      <img src="${imgURL}" alt="${t.name}">
+      <h3>${t.name}</h3>
+      <p><b>Price:</b> ${t.price}</p>
+      <p><b>Work:</b> ${t.work}</p>
+      <p><b>Details:</b> ${t.details}</p>
+      <p><b>Benefit:</b> ${t.benefit}</p>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>

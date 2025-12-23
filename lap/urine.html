@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Urine Test List</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+*{
+    font-family: Arial, sans-serif;
+    
+    margin:0;
+    padding:0;
+     box-sizing: border-box;
+}
+h1{
+    text-align:center;
+    color:#2c3e50;
+}
+#search{
+    width:100%;
+    max-width:400px;
+    padding:10px;
+    margin:20px auto;
+    display:block;
+    font-size:16px;
+}
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:15px;
+}
+.card{
+    background:#fff;
+    padding:15px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+.card h3{
+    margin:0 0 10px;
+    color:#0077b6;
+}
+.price{
+    font-weight:bold;
+    color:#27ae60;
+}
+.card p{
+    font-size:14px;
+    margin:5px 0;
+}
+</style>
+</head>
+
+<body>
+    <section class="navbar">
+            <div class="logo">
+                <span>💊</span> MedicoCare
+            </div>
+            <ul class="nav-links" id="navLinks">
+                 <li><a href="/med-web">Home</a></li>
+                <li><a href="/med-web/#medicine">Medicines</a></li>
+                <li><a href="/med-web/#services">Healthcare</a></li>
+                <li><a href="/med-web/#lab">Test</a></li>
+                <li><a href="/med-web/#emergency">Emergency</a></li>
+                <li><a href="/med-web/#appointment">Book an Appointment</a></li> 
+                   <li><a href="/med-web/#review">Review</a>
+          
+                 <li><a href="/med-web/#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+         </section>
+
+<h1>🧪 Urine Tests (29 Types)</h1>
+
+<input type="text" id="search" placeholder="Search urine test...">
+
+<div class="container" id="testList"></div>
+
+<script>
+const tests = [
+{ name:"Routine Urine Examination", price:150, details:"Basic urine analysis", work:"Checks color, sugar, protein", benefit:"Detects infection & kidney issues"},
+{ name:"Urine Sugar", price:100, details:"Measures glucose level", work:"Checks diabetes", benefit:"Early diabetes detection"},
+{ name:"Urine Protein", price:120, details:"Protein presence", work:"Kidney function test", benefit:"Detects kidney damage"},
+{ name:"Urine Ketone", price:120, details:"Ketone bodies", work:"Checks fat metabolism", benefit:"Diabetes monitoring"},
+{ name:"Urine Pregnancy Test", price:200, details:"hCG hormone", work:"Detects pregnancy", benefit:"Early pregnancy confirmation"},
+{ name:"Urine Culture", price:600, details:"Bacterial growth", work:"Identifies infection", benefit:"Correct antibiotic treatment"},
+{ name:"Urine Microscopy", price:250, details:"Microscopic exam", work:"Checks cells/crystals", benefit:"UTI detection"},
+{ name:"Urine Albumin", price:150, details:"Albumin protein", work:"Kidney damage check", benefit:"Early kidney disease"},
+{ name:"Urine Creatinine", price:180, details:"Creatinine level", work:"Kidney efficiency", benefit:"Renal function monitoring"},
+{ name:"Urine Calcium", price:200, details:"Calcium excretion", work:"Bone & kidney test", benefit:"Stone risk detection"},
+{ name:"Urine Sodium", price:200, details:"Sodium level", work:"Electrolyte balance", benefit:"Blood pressure control"},
+{ name:"Urine Potassium", price:200, details:"Potassium level", work:"Electrolyte check", benefit:"Heart & muscle health"},
+{ name:"Urine Chloride", price:180, details:"Chloride amount", work:"Acid-base balance", benefit:"Metabolic health"},
+{ name:"Urine pH Test", price:100, details:"Acidity level", work:"Urine pH check", benefit:"Stone prevention"},
+{ name:"Urine Specific Gravity", price:120, details:"Urine concentration", work:"Hydration status", benefit:"Kidney health"},
+{ name:"Urine Uric Acid", price:200, details:"Uric acid", work:"Gout risk", benefit:"Joint protection"},
+{ name:"Urine Bilirubin", price:150, details:"Bilirubin level", work:"Liver function", benefit:"Liver disease detection"},
+{ name:"Urine Urobilinogen", price:150, details:"Bile pigment", work:"Liver & hemolysis", benefit:"Liver monitoring"},
+{ name:"Urine Nitrite", price:120, details:"Nitrite presence", work:"Bacterial infection", benefit:"UTI detection"},
+{ name:"Urine Leukocytes", price:120, details:"WBC detection", work:"Infection sign", benefit:"UTI diagnosis"},
+{ name:"Urine RBC", price:150, details:"Red blood cells", work:"Bleeding detection", benefit:"Kidney/stone detection"},
+{ name:"Urine Casts", price:250, details:"Tube-shaped particles", work:"Kidney damage", benefit:"Renal diagnosis"},
+{ name:"Urine Crystals", price:200, details:"Crystal analysis", work:"Stone risk", benefit:"Kidney stone prevention"},
+{ name:"Urine Osmolality", price:400, details:"Urine concentration", work:"Water balance", benefit:"Hydration assessment"},
+{ name:"24 Hour Urine Test", price:700, details:"Full-day urine analysis", work:"Metabolic study", benefit:"Accurate diagnosis"},
+{ name:"Urine Phosphate", price:200, details:"Phosphate level", work:"Bone metabolism", benefit:"Bone health"},
+{ name:"Urine Magnesium", price:220, details:"Magnesium excretion", work:"Electrolyte balance", benefit:"Muscle health"},
+{ name:"Urine Drug Test", price:800, details:"Drug screening", work:"Detects drugs", benefit:"Legal & medical use"},
+{ name:"Urine Hemoglobin", price:180, details:"Hemoglobin presence", work:"Blood detection", benefit:"Kidney & bladder check"}
+];
+
+const list = document.getElementById("testList");
+
+function showData(data){
+    list.innerHTML = "";
+    data.forEach(t=>{
+        list.innerHTML += `
+        <div class="card">
+            <h3>${t.name}</h3>
+            <p class="price">Price: ₹${t.price}</p>
+            <p><b>Details:</b> ${t.details}</p>
+            <p><b>Work:</b> ${t.work}</p>
+            <p><b>Benefit:</b> ${t.benefit}</p>
+        </div>`;
+    });
+}
+
+showData(tests);
+
+document.getElementById("search").addEventListener("input", function(){
+    const value = this.value.toLowerCase();
+    const filtered = tests.filter(t => t.name.toLowerCase().includes(value));
+    showData(filtered);
+});
+</script>
+
+</body>
+</html>
